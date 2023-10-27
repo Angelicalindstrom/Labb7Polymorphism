@@ -6,31 +6,27 @@ using System.Threading.Tasks;
 
 namespace Labb7Polymorphism
 { // Angelica Lindström NET.23
-    internal class Parallellogram : Geometri //  ärver ifrån Geometri
+    internal class Parallellogram : IGeometri // Ärver ifrån IGeometri
     {
         // Egenskaper
-        private double ParaBase{ get; }
+        public string Name => "Parallellogram";
+        public double ParaBase { get; }
+        public double ParaHeight { get; }
 
-        private double ParaHeight { get; }
-
-
-        public Parallellogram(string name) : base(name)
+        // Frivilliga standardvärden i konstruktorns parameter
+        public Parallellogram(double paraBase = 5.5, double paraHeight = 7.5)
         {
-            // Fasta värden i konstruktorn
-            ParaBase = 5.5;
-            ParaHeight = 7.5;
+            ParaBase = paraBase;
+            ParaHeight = paraHeight;
         }
 
-
-        // tvingas overrida metoden ifrån Parentclassen Geometri, klass med returntyp double
-        public override double Area()
+        // Implementation av ärvd metod från IGeometri
+        public void Area()
         {
             // Nytt räknesätt
             Console.WriteLine($"\nFör att räkna ut Arean av en {Name} måste vi räkna Basen {ParaBase} x Höjden {ParaHeight}");
             double answer = Math.Round(ParaBase * ParaHeight, 2);
-            Console.Write($"Arean på vår {Name} är: {answer}.\n");
-            return answer;
-            // Returntyp double
+            Console.WriteLine($"Arean på vår {Name} är: {answer}.");
         }
     }
 }

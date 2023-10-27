@@ -5,20 +5,20 @@
         static void Main(string[] args)
         {
 
-            Geometri MyRektangle = new Rektangel("rektangel");
-            MyRektangle.Area();
+            IGeometri myRectangle = new Rektangel();
+            myRectangle.Area();
 
-            Geometri MySquare = new Fyrkant("Fyrkant");
-            MySquare.Area();
+            IGeometri mySquare = new Fyrkant();
+            mySquare.Area();
 
-            Geometri MyCirkle = new Cirkel("Cirkel");
-            MyCirkle.Area();
+            IGeometri myCircle = new Cirkel();
+            myCircle.Area();
 
-            Geometri MyParallellogram = new Parallellogram("Paralellogram");
-            MyParallellogram.Area();
+            IGeometri myParallellogram = new Parallellogram();
+            myParallellogram.Area();
 
-            Geometri MyEllips = new Ellips("Ellips");
-            MyEllips.Area();
+            IGeometri myEllips = new Ellips();
+            myEllips.Area();
 
         }
     }

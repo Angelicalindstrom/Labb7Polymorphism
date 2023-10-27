@@ -7,34 +7,29 @@ using System.Xml.Linq;
 
 namespace Labb7Polymorphism
 { // Angelica Lindström NET.23
-    internal class Ellips : Geometri // ärver ifrån Geometri
+    internal class Ellips : IGeometri // Ärver ifrån IGeometri
     {
         // Egenskaper
-        private double RadiusA { get; }
-
-        private double RadiusB { get; }
-
-        private double Pi { get; }
+        public string Name => "Ellips";
+        public double RadiusA { get; }
+        public double RadiusB { get; }
 
 
-        public Ellips(string name) : base (name)
+        // Frivilliga standardvärden i konstruktorns parameter
+        public Ellips(double radiusA = 13.43, double radiusB = 9.21223)
         {
-            // Fasta värden i konstruktorn
-            RadiusA = 13.43;
-            RadiusB = 9.21223;
-            Pi = Math.PI;
+            RadiusA = radiusA;
+            RadiusB = radiusB;
         }
 
 
-        // tvingas overrida metoden ifrån Parentclassen Geometri, klass med returntyp double
-        public override double Area()
+        // Implementation av ärvd metod från IGeometri
+        public void Area()
         {
             // Nytt räknesätt
-            Console.WriteLine($"\nFör att räkna ut Arean av en {Name} måste vi räkna :  pi {Pi} * RadieA {RadiusA} * RadieB {RadiusB}");
-            double answer = Math.Round((Pi * RadiusA * RadiusB), 2);
-            Console.Write($"Arean på vår {Name} är: {answer}, vi avrundar till 2 decimaler.\n");
-            return answer;
-            // Returntyp double
+            Console.WriteLine($"\nFör att räkna ut Arean av en {Name} måste vi räkna : pi {Math.PI} * RadieA {RadiusA} * RadieB {RadiusB}");
+            double answer = Math.Round(Math.PI * RadiusA * RadiusB, 2);
+            Console.WriteLine($"Arean på vår {Name} är: {answer}, vi avrundar till 2 decimaler.");
         }
     }
 }

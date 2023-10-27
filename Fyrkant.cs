@@ -6,26 +6,25 @@ using System.Threading.Tasks;
 
 namespace Labb7Polymorphism
 { // Angelica Lindström NET.23
-    internal class Fyrkant: Geometri //  ärver ifrån Geometri
+    internal class Fyrkant: IGeometri // Ärver ifrån IGeometri
     {
         // Egenskaper
-        private double SquareSide { get; }
+        public string Name => "Fyrkant";
+        public double SquareSide { get; }
         
-        public Fyrkant(string name) : base(name)
+        // Frivilligt standardvärde i konstruktorns parameter
+        public Fyrkant(double squareSide = 4)
         {
-            // Fasta värden i konstruktorn
-            SquareSide = 4;
+            SquareSide = squareSide;
         }
 
-        // tvingas overrida metoden ifrån Parentclassen Geometri, klass med returntyp double
-        public override double Area()
+        // Implementation av ärvd metod från IGeometri
+        public void Area()
         {
             // Nytt räknesätt
             Console.WriteLine($"\nFör att räkna ut Arean av en {Name} måste vi multiplicera en sida x 2, ({SquareSide} x {SquareSide})");
             double answer = Math.Round(SquareSide * SquareSide, 2);
-            Console.Write($"Arean på vår {Name} är: {answer}\n");
-            return answer;
-            // Returntyp double
+            Console.WriteLine($"Arean på vår {Name} är: {answer}");
         }
     }
 }
